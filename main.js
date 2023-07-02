@@ -1,8 +1,4 @@
-const moves = {
-  0: "Rock",
-  1: "Paper",
-  2: "Scissors",
-};
+const moves = ["Rock", "Paper", "Scissors"];
 
 const WIN = 1;
 const LOSS = -1;

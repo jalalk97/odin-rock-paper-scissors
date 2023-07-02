@@ -92,7 +92,7 @@ function game() {
       } else if (result > 0) {
         wins++;
       }
-      console.log();
+      console.log(`Score: Player ${wins} - ${losses} Computer\n`);
       if (wins == NUMBER_OF_GAMES) {
         console.log("Game Over. You Won!");
         break;

@@ -4,6 +4,9 @@ const moves = {
   2: "Scissors",
 };
 
+const WIN = 1;
+const LOSS = -1;
+const DRAW = 0;
 function getRandomInt(max) {
   return Math.floor(Math.random() * max);
 }
@@ -18,44 +21,60 @@ function capitalize(string) {
 }
 
 function playRound(playerSelection, computerSelection) {
-  switch (capitalize(computerSelection)) {
+  playerSelection = capitalize(playerSelection);
+  switch (computerSelection) {
     case "Rock":
-      switch (capitalize(playerSelection)) {
+      switch (playerSelection) {
         case "Rock":
-          return "It's a draw!";
+          console.log("It's a draw!");
+          return DRAW;
         case "Paper":
-          return `You Win! ${playerSelection} beats ${computerSelection}`;
+          console.log(`You Win! ${playerSelection} beats ${computerSelection}`);
+          return WIN;
         case "Scissors":
-          return `You Lose! ${computerSelection} beats ${playerSelection}`;
+          console.log(
+            `You Lose! ${computerSelection} beats ${playerSelection}`
+          );
+          return LOSS;
         default:
           throw new Error(`Invalid option: ${playerSelection}`);
       }
 
     case "Paper":
-      switch (capitalize(playerSelection)) {
+      switch (playerSelection) {
         case "Rock":
-          return `You Lose! ${computerSelection} beats ${playerSelection}`;
+          console.log(
+            `You Lose! ${computerSelection} beats ${playerSelection}`
+          );
+          return LOSS;
         case "Paper":
-          return "It's a draw!";
+          console.log("It's a draw!");
+          return DRAW;
         case "Scissors":
-          return `You Win! ${playerSelection} beats ${computerSelection}`;
+          console.log(`You Win! ${playerSelection} beats ${computerSelection}`);
+          return WIN;
         default:
           throw new Error(`Invalid option: ${playerSelection}`);
       }
 
     case "Scissors":
-      switch (capitalize(playerSelection)) {
+      switch (playerSelection) {
         case "Rock":
-          return `You Win! ${playerSelection} beats ${computerSelection}`;
+          console.log(`You Win! ${playerSelection} beats ${computerSelection}`);
+          return WIN;
         case "Paper":
-          return `You Lose! ${computerSelection} beats ${playerSelection}`;
+          console.log(
+            `You Lose! ${computerSelection} beats ${playerSelection}`
+          );
+          return LOSS;
         case "Scissors":
-          return "It's a draw!";
+          console.log("It's a draw!");
+          return DRAW;
         default:
-          throw new Error(`Invalid option: ${playerSelection}`);
+          throw new Error(`Error: Invalid option: ${playerSelection}`);
       }
 
     default:
-      throw new Error(`Invalid option: ${computerSelection}`);
+      throw new Error(`Error: Invalid option: ${computerSelection}`);
   }
 }

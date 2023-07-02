@@ -7,6 +7,8 @@ const moves = {
 const WIN = 1;
 const LOSS = -1;
 const DRAW = 0;
+const NUMBER_OF_GAMES = 5;
+
 function getRandomInt(max) {
   return Math.floor(Math.random() * max);
 }
@@ -78,3 +80,35 @@ function playRound(playerSelection, computerSelection) {
       throw new Error(`Error: Invalid option: ${computerSelection}`);
   }
 }
+
+function game() {
+  let wins = 0;
+  let losses = 0;
+  while (true) {
+    const playerSelection = capitalize(prompt("Your move: "));
+    const computerSelection = getComputerChoice();
+    console.log(`Your move: ${playerSelection}`);
+    console.log(`The computer's move: ${computerSelection}`);
+    try {
+      const result = playRound(playerSelection, computerSelection);
+      if (result < 0) {
+        losses++;
+      } else if (result > 0) {
+        wins++;
+      }
+      console.log();
+      if (wins == NUMBER_OF_GAMES) {
+        console.log("Game Over. You Won!");
+        break;
+      }
+      if (losses == NUMBER_OF_GAMES) {
+        console.log("Game Over. You Lost.");
+        break;
+      }
+    } catch (error) {
+      console.log(error.message);
+    }
+  }
+}
+
+game();

@@ -86,9 +86,9 @@ function game() {
     console.log(`The computer's move: ${computerSelection}`);
     try {
       const result = playRound(playerSelection, computerSelection);
-      if (result < 0) {
+      if (result == LOSS) {
         losses++;
-      } else if (result > 0) {
+      } else if (result == WIN) {
         wins++;
       }
       console.log(`Score: Player ${wins} - ${losses} Computer\n`);

@@ -1,5 +1,4 @@
-const moves = ["Rock", "Paper", "Scissors"];
-
+const POSSIBLE_MOVES = ["Rock", "Paper", "Scissors"];
 const WIN = 1;
 const LOSS = -1;
 const DRAW = 0;
@@ -10,8 +9,8 @@ function getRandomInt(max) {
 }
 
 function getComputerChoice() {
-  const choice = getRandomInt(Object.keys(moves).length);
-  return moves[choice];
+  const choice = getRandomInt(POSSIBLE_MOVES.length);
+  return POSSIBLE_MOVES[choice];
 }
 
 function capitalize(string) {
